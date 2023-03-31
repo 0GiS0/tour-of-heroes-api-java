@@ -1,0 +1,4 @@
+2023-03-29 16:45:11.844+02:00 INFO  c.m.applicationinsights.agent - Application Insights Java Agent 3.4.10 started successfully (PID 22880, JVM running for 1.857 s)
+2023-03-29 16:45:11.850+02:00 INFO  c.m.applicationinsights.agent - Java version: 19.0.2, vendor: Homebrew, home: /usr/local/Cellar/openjdk/19.0.2/libexec/openjdk.jdk/Contents/Home
+2023-03-29 16:50:14.715+02:00 INFO  c.m.applicationinsights.agent - Application Insights Java Agent 3.4.10 started successfully (PID 23135, JVM running for 1.72 s)
+2023-03-29 16:50:14.727+02:00 INFO  c.m.applicationinsights.agent - Java version: 19.0.2, vendor: Homebrew, home: /usr/local/Cellar/openjdk/19.0.2/libexec/openjdk.jdk/Contents/Home
