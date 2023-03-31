@@ -44,7 +44,6 @@ az postgres server create \
 --version 11
 
 
-
 # Run app
 ./gradlew bootRun
 
