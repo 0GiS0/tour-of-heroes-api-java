@@ -1,22 +1,37 @@
 package net.returngis.tourofheroes;
 
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/api/hero")
 public class HeroesController {
-    
-    private static final String template = "Hello, %s!";
-    private final AtomicLong counter = new AtomicLong();
 
-    //http://localhost:8080/heroes
-    @RequestMapping("/heroes")
-    public Hero hero(@RequestParam(value="name", defaultValue="World") String name) {
-        return new Hero(counter.incrementAndGet(),
-                            String.format(template, name));
+    private HeroRepository repository;
+
+    public HeroesController(HeroRepository repository) {
+        this.repository = repository;
+    }
+
+    @GetMapping()
+    public Iterable<Hero> getHeroes(@RequestParam(value = "name", defaultValue = "World") String name) {
+
+        return repository.findAll();
+    }
+
+    @PostMapping()
+    public ResponseEntity<Hero> createHero(@RequestBody Hero hero) {
+        Hero newHero = repository.save(hero);
+        return new ResponseEntity<Hero>(newHero, HttpStatus.ACCEPTED);
     }
 
 }

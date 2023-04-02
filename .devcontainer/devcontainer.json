@@ -6,20 +6,36 @@
 	"service": "app",
 	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
 	"features": {
-		// "ghcr.io/devcontainers/features/azure-cli:1": {
-		// 	"version": "latest"
-		// }
-	}
+		"ghcr.io/devcontainers/features/azure-cli:1": {
+			"version": "latest"
+		}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-ossdata.vscode-postgresql",
+				"ms-azuretools.vscode-docker",
+				"vscjava.vscode-gradle",
+				"humao.rest-client",
+				"GitHub.copilot"
+			]
+		},
+		"codespaces": {
+			"openFiles": ["src/main/java/net/returngis/tourofheroes/HeroesController.java"]
+		}
+	
+	},
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {}
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// This can be used to network with other containers or with the host.
-	// "forwardPorts": [5432],
+	"forwardPorts": [8080,5432],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "java -version",
+	"postStartCommand": "./gradlew bootRun"
 
 	// Configure tool-specific properties.
 	// "customizations": {},
