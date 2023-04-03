@@ -43,6 +43,12 @@ az postgres server create \
 --sku-name B_Gen5_1 \
 --version 11
 
+# Create database
+az postgres db create \
+--name tourofheroes \
+--resource-group $RESOURCE_GROUP \
+--server-name $APPLICATION_NAME-postgres
+
 
 # Run app
 ./gradlew bootRun
