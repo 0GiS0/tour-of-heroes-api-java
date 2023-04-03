@@ -72,3 +72,5 @@ io.netty.handler.ssl.SslHandshakeTimeoutException: handshake timed out after 100
 	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
 	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
 	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-04-03 11:38:13.804Z INFO  c.m.applicationinsights.agent - Application Insights Java Agent 3.4.10 started successfully (PID 13673, JVM running for 3.343 s)
+2023-04-03 11:38:13.812Z INFO  c.m.applicationinsights.agent - Java version: 17.0.6, vendor: Microsoft, home: /usr/lib/jvm/msopenjdk-current
