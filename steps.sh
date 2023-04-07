@@ -28,18 +28,22 @@ az redis create \
 --enable-non-ssl-port
 
 # Get Azure Cache for Redis connection string
-REDIS_CONNECTION_STRING=$(az redis list-keys \
+REDIS_PRIMARY_KEY=$(az redis list-keys \
 --name $APPLICATION_NAME-redis \
 --resource-group $RESOURCE_GROUP \
 --query "primaryKey" -o tsv)
+
+# Test Redis connection
+# Create docker container with redis-cli
+echo "docker run -it --rm redis:6.2.5-alpine redis-cli -h $APPLICATION_NAME-redis.redis.cache.windows.net -p 6379 -a $REDIS_PRIMARY_KEY"
 
 # Create a Azure Database for PostgreSQL
 az postgres server create \
 --name $APPLICATION_NAME-postgres \
 --resource-group $RESOURCE_GROUP \
 --location $LOCATION \
---admin-user postgres \
---admin-password 'P@ssw0rd!' \
+--admin-user $DB_USERNAME \
+--admin-password $DB_PASSWORD \
 --sku-name B_Gen5_1 \
 --version 11
 
@@ -66,7 +70,7 @@ curl -L https://github.com/microsoft/ApplicationInsights-Java/releases/download/
 ### JVM argument ###
 APPLICATIONINSIGHTS_CONNECTION_STRING=$APP_INSIGHTS_CONNECTION_STRING \
 java -javaagent:./applicationinsights-agent-3.4.10.jar \
--jar build/libs/tour-of-heroes-0.0.1-SNAPSHOT.jar
+-jar build/libs/tour-of-heroes-0.0.2-SNAPSHOT.jar
 
 
 ###################

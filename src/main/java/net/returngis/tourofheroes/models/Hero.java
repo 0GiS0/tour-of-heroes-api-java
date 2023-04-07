@@ -1,4 +1,7 @@
-package net.returngis.tourofheroes;
+package net.returngis.tourofheroes.models;
+
+import java.io.Serializable;
+
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,7 +12,12 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "heroes")
-public class Hero {
+// @Cacheable
+// @org.hibernate.annotations.Cache(usage = org.hibernate.annotations.CacheConcurrencyStrategy.READ_WRITE)
+public class Hero implements Serializable{
+
+	private static final long serialVersionUID = -4439114469417994311L;
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -10,8 +10,8 @@
 			"version": "latest"
 		},
 		"ghcr.io/devcontainers/features/sshd:1": {
-        	"version": "latest"
-    	}
+			"version": "latest"
+		}
 	},
 	"customizations": {
 		"vscode": {
@@ -20,29 +20,36 @@
 				"ms-azuretools.vscode-docker",
 				"vscjava.vscode-gradle",
 				"humao.rest-client",
-				"GitHub.copilot"
+				"GitHub.copilot",
+				"cweijan.vscode-redis-client"
 			]
 		},
 		"codespaces": {
-			"openFiles": ["src/main/java/net/returngis/tourofheroes/HeroesController.java"]
+			"openFiles": [
+				"src/main/java/net/returngis/tourofheroes/HeroesController.java"
+			]
 		}
-	
 	},
-
+	"containerEnv": {
+		"DB_DATASOURCE_URL": "jdbc:postgresql://localhost:5432/postgres",
+		"DB_USERNAME": "postgres",
+		"DB_PASSWORD": "postgres",
+		"REDIS_HOSTNAME": "redis",
+		"REDIS_PORT": "6379",
+		"REDIS_PASSWORD": "eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81"
+	},
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {}
-
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// This can be used to network with other containers or with the host.
-	"forwardPorts": [8080],
-
+	"forwardPorts": [
+		8080
+	],
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "java -version",
 	"postStartCommand": "./gradlew bootRun"
-
 	// Configure tool-specific properties.
 	// "customizations": {},
-
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"
 }
