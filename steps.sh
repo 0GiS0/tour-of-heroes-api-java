@@ -53,6 +53,8 @@ az postgres db create \
 --resource-group $RESOURCE_GROUP \
 --server-name $APPLICATION_NAME-postgres
 
+# Get my IP address
+curl ifconfig.me
 
 # Run app
 ./gradlew bootRun
