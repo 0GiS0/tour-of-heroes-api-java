@@ -16,6 +16,7 @@ import net.returngis.tourofheroes.models.Hero;
 import net.returngis.tourofheroes.services.HeroService;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/hero")
 public class HeroesController {
 
