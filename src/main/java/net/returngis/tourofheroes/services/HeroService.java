@@ -1,6 +1,7 @@
 package net.returngis.tourofheroes.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -24,10 +25,14 @@ public class HeroService {
         return repository.findById(id).orElse(null);
     }
 
+    // Clean cache when a hero is saved
+    @CacheEvict(value = "heroes", allEntries = true)
     public Hero save(Hero hero) {
         return repository.save(hero);
     }
 
+    // Clean cache when a hero is saved
+    @CacheEvict(value = "heroes", allEntries = true)
     public void deleteById(Long id) {
         repository.deleteById(id);
     }

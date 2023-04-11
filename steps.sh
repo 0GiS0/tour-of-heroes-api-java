@@ -6,12 +6,24 @@ APPLICATION_NAME="tour-of-heroes-java"
 # Create a resource group
 az group create --name $RESOURCE_GROUP --location $LOCATION
 
+# Create a Log Analytics workspace
+az monitor log-analytics workspace create \
+--resource-group $RESOURCE_GROUP \
+--workspace-name $APPLICATION_NAME-log-analytics \
+--location $LOCATION
+
+# Get Log Analytics workspace id
+LOG_ANALYTICS_WORKSPACE_ID=$(az monitor log-analytics workspace show \
+--resource-group $RESOURCE_GROUP \
+--workspace-name $APPLICATION_NAME-log-analytics \
+--query "id" -o tsv)
+
 # Create Application Insights
 az monitor app-insights component create \
 --app $APPLICATION_NAME-insights --location $LOCATION \
 --kind web -g $RESOURCE_GROUP \
 --application-type web \
---retention-time 120
+--workspace $LOG_ANALYTICS_WORKSPACE_ID
 
 # Get Application Insights instrumentation key
 APP_INSIGHTS_CONNECTION_STRING=$(az monitor app-insights component show \
@@ -62,9 +74,10 @@ curl ifconfig.me
 
 # There are two options for enabling Application Insights Java with Spring Boot: JVM argument and programmatically.
 
+#### JVM argument ####
+
 # Download Application Insights Java agent from GitHub
 curl -L https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.4.10/applicationinsights-agent-3.4.10.jar -o applicationinsights-agent-3.4.10.jar
-
 
 # Build app
 ./gradlew build
@@ -74,16 +87,5 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=$APP_INSIGHTS_CONNECTION_STRING \
 java -javaagent:./applicationinsights-agent-3.4.10.jar \
 -jar build/libs/tour-of-heroes-0.0.2-SNAPSHOT.jar
 
-
-###################
-#### Resources ####
-###################
-# https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-enable?tabs=java
-# https://learn.microsoft.com/en-us/azure/azure-monitor/app/java-spring-boot
-# https://www.tutorialspoint.com/spring_boot/spring_boot_building_restful_web_services.htm
-# https://hantsy.gitbook.io/build-a-restful-app-with-spring-mvc-and-angularjs/build-rest
-
-
-# https://github.com/akraskovski/spring-boot-postgresql-gradle
-# https://refactorizando.com/ejemplo-spring-data-postgresql-docker/
-# https://spring.io/guides/gs/accessing-data-mysql/
+### Programmatically ###
+# https://learn.microsoft.com/en-us/azure/azure-monitor/app/java-spring-boot#enabling-programmatically
