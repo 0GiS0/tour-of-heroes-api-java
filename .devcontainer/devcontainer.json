@@ -16,11 +16,12 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"ckolkman.vscode-postgres",				
+				"ckolkman.vscode-postgres",
 				"vscjava.vscode-gradle",
 				"humao.rest-client",
 				"GitHub.copilot",
-				"cweijan.vscode-redis-client"
+				"cweijan.vscode-redis-client",
+				"PKief.material-icon-theme"
 			]
 		},
 		"codespaces": {
