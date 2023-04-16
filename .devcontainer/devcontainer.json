@@ -16,8 +16,7 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"ckolkman.vscode-postgres",
-				"ms-azuretools.vscode-docker",
+				"ckolkman.vscode-postgres",				
 				"vscjava.vscode-gradle",
 				"humao.rest-client",
 				"GitHub.copilot",
