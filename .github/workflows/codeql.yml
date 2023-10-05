@@ -78,3 +78,7 @@ jobs:
       with:
         category: "/language:${{matrix.language}}"
 
+    - name: Gradle Build Action
+      uses: gradle/gradle-build-action@v2.9.0
+            
+
