@@ -1,5 +1,6 @@
 package net.returngis.tourofheroes.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
@@ -8,18 +9,24 @@ import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactor
 @Configuration
 class AppConfig {
 
-  @Bean
-  public LettuceConnectionFactory redisConnectionFactory() {
+    @Value("${spring.data.redis.host}")
+    private String redisHost;
+    @Value("${spring.data.redis.port}")
+    private Integer redisPort;
+    @Value("${spring.data.redis.password}")
+    private String redisPassword;
 
-    // Get redis configuration from environment variables
-    String redisHost = System.getenv("REDIS_HOSTNAME");
-    Integer redisPort = Integer.parseInt(System.getenv("REDIS_PORT"));
-    String redisPassword = System.getenv("REDIS_PASSWORD");
+    @Bean
+    public LettuceConnectionFactory redisConnectionFactory() {
 
-    // RedisStandalone configuration with credentials
-    LettuceConnectionFactory connectionFactory = new LettuceConnectionFactory(
-        new RedisStandaloneConfiguration(redisHost, redisPort));
-    connectionFactory.setPassword(redisPassword);
-    return connectionFactory;
-  }
+//    // Get redis configuration from environment variables
+//    String redisHost = System.getenv("REDIS_HOSTNAME");
+//    Integer redisPort = Integer.parseInt(System.getenv("REDIS_PORT"));
+//    String redisPassword = System.getenv("REDIS_PASSWORD");
+
+        // RedisStandalone configuration with credentials
+        LettuceConnectionFactory connectionFactory = new LettuceConnectionFactory(new RedisStandaloneConfiguration(redisHost, redisPort));
+        connectionFactory.setPassword(redisPassword);
+        return connectionFactory;
+    }
 }
