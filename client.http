@@ -86,3 +86,35 @@ content-type: application/json
     "alterEgo": "Bruce Wayne",
     "description": "Un multimillonario magnate empresarial y filántropo dueño de Empresas Wayne en Gotham City. Después de presenciar el asesinato de sus padres, el Dr. Thomas Wayne y Martha Wayne en un violento y fallido asalto cuando era niño, juró venganza contra los criminales, un juramento moderado por el sentido de la justicia."
 }
+
+###
+# Crear un nuevo villano
+POST http://localhost:8080/api/villain HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Joker",
+    "power": "Inteligencia superior"
+}
+
+###
+# Obtener todos los villanos
+GET http://localhost:8080/api/villain HTTP/1.1
+
+###
+# Obtener un villano por su ID
+GET http://localhost:8080/api/villain/1 HTTP/1.1
+
+###
+# Actualizar un villano por su ID
+PUT http://localhost:8080/api/villain/1 HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Joker",
+    "power": "Manipulación psicológica"
+}
+
+###
+# Eliminar un villano por su ID
+DELETE http://localhost:8080/api/villain/1 HTTP/1.1
