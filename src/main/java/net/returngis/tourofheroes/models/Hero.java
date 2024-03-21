@@ -1,14 +1,8 @@
 package net.returngis.tourofheroes.models;
 
+import jakarta.persistence.*;
+
 import java.io.Serializable;
-
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "heroes")
@@ -27,7 +21,7 @@ public class Hero implements Serializable{
     @Column(length = 1000)
     private String description;
 
-    protected Hero() {
+    public Hero() {
 
     }
 
