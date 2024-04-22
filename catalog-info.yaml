@@ -13,7 +13,7 @@ metadata:
       title: Production
       icon: globe
 spec:
-  type: website
+  type: service
   lifecycle: production
   owner: user:0GiS0
   system: tour-of-heroes
