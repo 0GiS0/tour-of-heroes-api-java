@@ -12,6 +12,8 @@ metadata:
     - url: https://api.heroes.es
       title: Production
       icon: globe
+  annotations:
+    github.com/project-slug: 0GiS0/tour-of-heroes-api-java
 spec:
   type: service
   lifecycle: production
