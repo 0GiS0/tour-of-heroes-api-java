@@ -75,7 +75,7 @@ content-type: application/json
 GET http://localhost:8080/api/hero/16 HTTP/1.1
 
 ###
-DELETE http://localhost:8080/api/hero/125 HTTP/1.1
+DELETE http://localhost:8080/api/hero/1 HTTP/1.1
 
 ###
 PUT http://localhost:8080/api/hero/2 HTTP/1.1

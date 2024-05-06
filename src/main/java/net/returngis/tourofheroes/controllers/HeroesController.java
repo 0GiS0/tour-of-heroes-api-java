@@ -19,24 +19,26 @@ public class HeroesController {
     public ResponseEntity<Iterable<Hero>> getHeroes() {
 
         Iterable<Hero> heroes = heroService.getHeroes();
-        return new ResponseEntity<Iterable<Hero>>(heroes, HttpStatus.OK);
+        return new ResponseEntity<>(heroes, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Hero> getHeroById(@PathVariable("id") Long id) {
         Hero hero = heroService.findById(id);
-        return new ResponseEntity<Hero>(hero, HttpStatus.OK);
+        return new ResponseEntity<>(hero, HttpStatus.OK);
     }
 
     @PostMapping()
     public ResponseEntity<Hero> createHero(@RequestBody Hero hero) {
         Hero newHero = heroService.save(hero);
-        return new ResponseEntity<Hero>(newHero, HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(newHero, HttpStatus.ACCEPTED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Hero> updateHero(@PathVariable("id") Long id, @RequestBody Hero hero) {
+    public ResponseEntity<Hero> updateHero(@RequestBody Hero hero) {
         Hero updatedHero = heroService.save(hero);
-        return new ResponseEntity<Hero>(updatedHero, HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(updatedHero, HttpStatus.ACCEPTED);
     }
+
+
 }
