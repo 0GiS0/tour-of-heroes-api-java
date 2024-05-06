@@ -1,0 +1,24 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: heroes-java-api
+  description: Heroes Java API is RESTFul API that manages heroes
+  tags:
+    - java    
+  links:
+    - url: https://github.com/0GiS0/tour-of-heroes-api-java
+      title: Source Code
+      icon: github
+    - url: https://api.heroes.es
+      title: Production
+      icon: globe
+  annotations:
+    github.com/project-slug: 0GiS0/tour-of-heroes-api-java
+spec:
+  type: service
+  lifecycle: production
+  owner: marvel
+  system: tour-of-heroes
+  dependsOn: ['resource:heroes-db']  
+  providesApis:
+  - heroes-java-api
