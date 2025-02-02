@@ -17,7 +17,7 @@ metadata:
 spec:
   type: service
   lifecycle: production
-  owner: marvel
+  owner: group:targaryen
   system: tour-of-heroes
   dependsOn: ['resource:heroes-db']  
   providesApis:
