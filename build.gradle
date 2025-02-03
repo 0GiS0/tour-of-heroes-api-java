@@ -16,7 +16,7 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.postgresql:postgresql:42.7.4'
+	implementation 'org.postgresql:postgresql:42.7.5'
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis:3.2.3'
 	implementation 'io.lettuce:lettuce-core:6.5.1.RELEASE'
 	// implementation 'io.springfox:springfox-swagger2:3.0.0'
